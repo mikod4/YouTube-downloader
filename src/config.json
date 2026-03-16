@@ -1,0 +1,44 @@
+{
+    "title": "YouTube downloader",
+    "width": 350,
+    "height": 550,
+
+    "fontFamily": null,
+    "fontSize": 10,
+
+    "padx": 30,
+    "pady": 6,
+
+    "entryWidth": 230,
+    "entryHeight": 28,
+    "linkEntryPlaceholder": "Enter link",
+    "downloadPathEntryPlaceholder": "Enter download path",
+
+    "downloadButtonWidth": 100,
+    "downloadButtonHeight": 28,
+    "downloadPathButtonText": "Browse", 
+
+    "checkBoxWidth": 28,
+    "checkBoxHeight": 28,
+    "videoCheckBoxText": "Video",
+    "audioCheckBoxText": "Audio",
+
+    "optionMenuWidth": 200,
+    "optionMenuHeight": 28,
+    "OptionMenuValues": ["--Select video resolution--"],
+
+    "progressBarWidth": 250,
+
+    "buttonWidth": 250,
+    "buttonHeight": 28,
+    "downloadButtonText": "Download",
+
+    "LogFrameWidth": 250,
+    "LogFrameHeight": 200,
+    "LogFrameTitle": "Logs",
+    "LogFrameTitleFontSize": 16,
+    "LogFrameTitleBackground": "transparent",
+    "LogFrameErrorColor": "#F44336",
+    "LogFrameGoodColor": "#90EE90"
+
+}

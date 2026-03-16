@@ -1,5 +1,5 @@
-from Downloader import Downloader
+from src.App import App
 
 if __name__ == "__main__":
-    d = Downloader()
-    d.run()
+    app = App()
+    app.mainloop()

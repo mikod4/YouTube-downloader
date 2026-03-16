@@ -61,54 +61,6 @@ class Downloader:
     def getLink(self) -> str:
         return input("\nEnter YouTube link: ")
 
-    def download(
-        self, link: str, path: str, stream_strategy: Callable[[str, str], dict[str, Any]]
-    ) -> bool:
-        try:
-            options = stream_strategy(path, link)
-
-            print(f"\nStarting download...")
-
-            with yt_dlp.YoutubeDL(options) as ydl:
-                ydl.download([link])
-
-            print("\nDownload complete.")
-            return True
-        except Exception as e:
-            print(f"An error occurred: {e}")
-            return False
-
-    def selectResolution(self, link: str) -> str:
-        print("\nFetching available resolutions...")
-        with yt_dlp.YoutubeDL({'quiet': True}) as ydl:
-            info = ydl.extract_info(link, download=False)
-            formats = info.get('formats', [])
-            
-            resolutions = sorted(list(set(
-                f['height'] for f in formats if f.get('height') is not None
-            )), reverse=True)
-
-            print("\nAvailable resolutions:")
-            for i, res in enumerate(resolutions, 1):
-                print(f"{i}. {res}p")
-            
-            choice = self.getSelection(list(range(1, len(resolutions) + 1)))
-            selected_res = resolutions[choice - 1]
-            
-            return f"bestvideo[height<={selected_res}]+bestaudio/best"
-
-    def getAudioOptions(self, path: str) -> dict[str, Any]:
-        return {
-            "format": "bestaudio/best",
-            "outtmpl": f"{path}/%(title)s.%(ext)s",
-            "postprocessors": [
-                {
-                    "key": "FFmpegExtractAudio",
-                    "preferredcodec": "mp3",
-                    "preferredquality": "192",
-                }
-            ],
-        }
 
     def getVideoOptions(self, path: str, link: str) -> dict[str, Any]:
         chosen_format = self.selectResolution(link)
